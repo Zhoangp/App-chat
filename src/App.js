@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from 'react';
+import io from 'socket.io-client'
+import Chat from './Chat';
+const socket = io.connect("http://localhost:3001")
 function App() {
+  const [userName, setUserName] = useState("")
+  const [roomId, setRoomId] = useState("")
+  const joinRoom = () => {
+    if(userName !== "" && roomId !== "") {
+        socket.emit("join_room", roomId)
+    }
+  }
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Join A Chat</h3>
+      <input type="text" placeholder="John..." onChange={(event) => {
+          setUserName(event.target.value)
+      }}/>
+      <input type="text" placeholder="Room Id..." onChange={(event) => {
+          setRoomId(event.target.value)
+      }}/>
+      <button onClick={joinRoom}>Join Room</button>
+      <Chat socket={socket} userName={userName} roomId={roomId}/>
     </div>
   );
 }
