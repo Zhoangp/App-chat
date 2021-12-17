@@ -9,7 +9,7 @@ const Chat = (props) => {
   const [message, setMessage] = useState("");
   const [listMessage, setListMessage] = useState([]);
   const location = useLocation();
-  const ENDPOINT = "localhost:5000"; /* https://watch-app-chat.herokuapp.com/ */
+  const ENDPOINT = "https://watch-app-chat.herokuapp.com/" //"localhost:5000";
   useEffect(() => {
     infor = queryString.parse(location.search);
     socket = io(ENDPOINT, { transports: ["websocket"] });
