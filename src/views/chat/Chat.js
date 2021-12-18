@@ -3,16 +3,16 @@ import queryString from "query-string";
 import io from "socket.io-client";
 import { useLocation } from "react-router-dom";
 
-let socket;
 let infor;
+const ENDPOINT = /* "https://watch-app-chat.herokuapp.com/" */ "localhost:5000";
+const socket = io(ENDPOINT, { transports: ["websocket"] });
+
 const Chat = (props) => {
   const [message, setMessage] = useState("");
   const [listMessage, setListMessage] = useState([]);
   const location = useLocation();
-  const ENDPOINT = "https://watch-app-chat.herokuapp.com/" //"localhost:5000";
   useEffect(() => {
     infor = queryString.parse(location.search);
-    socket = io(ENDPOINT, { transports: ["websocket"] });
     socket.emit("join", infor);
   }, [location.search]);
 

@@ -1,6 +1,7 @@
 import SignIn from './views/sign_in'
 import Chat from './views/chat/Chat'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import './sass/main.scss'
 function App() {
   return (
     <BrowserRouter>
