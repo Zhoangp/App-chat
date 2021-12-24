@@ -25,6 +25,9 @@
                     h1 {
                         font-size: 50px;
                         font-family: fira-bold;
+                        span {
+                            color: $color-red-1;
+                        }
                     }
                 }
 
@@ -103,7 +106,7 @@
                         left: 0;
                     }
                     .lable:after {
-                        color: $color-vio-1;
+                        color: $color-red-1;
                         content: '\f121';
                         font-family: "Ionicons";
                         width: 20px;
@@ -120,7 +123,7 @@
 
 
                     }
-                    input:checked + .lable:after {
+                     input:checked + .lable:after {
                         opacity: 1;
                         transform: scale(1);
                     } 

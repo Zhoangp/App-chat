@@ -32,7 +32,7 @@ const Index = () => {
                 <GiPadlock />
               </div>
               <div className="signin_q">
-                  <input id="remember" type="checkbox" />
+                  <input id="remember" type="checkbox"/>
                   <label htmlFor="remember" className="lable">Remember</label>
                   <NavLink to="/signup">Sign Up</NavLink>
               </div>

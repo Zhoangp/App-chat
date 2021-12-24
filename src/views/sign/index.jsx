@@ -14,7 +14,7 @@ const Index = () => {
             <div className="signin_left_cover">
             <div className="signin_left_content">
             <div className="signin_title">
-                <h1>Chat Seen</h1>
+                <h1>Chat<span> Seen</span> </h1>
                 <span>Welcome to the website</span>
               </div>
               {sign.pathname === '/signup' ? <SignUp/> : <SignIn/>}
