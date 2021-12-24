@@ -1,8 +1,13 @@
+@import '../Variable/color';
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: fira-book;
+}
+::selection {
+    background: $color-vio-1;
+    color: white;
 }
 header,
 footer,

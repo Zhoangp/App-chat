@@ -16,7 +16,7 @@ const Index = () => {
               <h1>USER LOGIN</h1>
               <span>Welcome to the website</span>
             </div>
-            <div className="signin_username">
+            <div className="input">
               <input
                 type="text"
                 placeholder="Username"
@@ -26,7 +26,7 @@ const Index = () => {
               />
               <IoMdPerson />
             </div>
-            <div className="signin_pass">
+            <div className="input">
               <input
                 type="text"
                 placeholder="Password"
@@ -37,11 +37,9 @@ const Index = () => {
               <GiPadlock />
             </div>
             <div className="signin_q">
-                <lable>
-                    <input type="checkbox"/>
-                    Remember
-                    <span></span>
-                </lable>
+            <input id="remember" type="checkbox" />
+                <label htmlFor="remember" className="lable">Remember</label>
+
             </div>
             <div className="login">
               <NavLink to={`/chat?name=${name}&room=${roomId}`}>LOGIN</NavLink>

@@ -15,6 +15,7 @@
         .signin_left {
             @include align;
             width: 40%;
+
             .signin_left_content {
                 .signin_title {
                     margin-bottom: 65px;
@@ -27,8 +28,10 @@
                     }
                 }
 
-                .signin_username {
+
+                .input {
                     position: relative;
+
                     svg {
                         width: 25px;
                         height: 25px;
@@ -37,7 +40,9 @@
                         left: 15px;
                         top: 21px;
                     }
+
                     input {
+                        color: $color-vio-1;
                         font-size: 15px;
                         margin: 15px 0;
                         width: 100%;
@@ -46,44 +51,101 @@
                         border: none;
                         background-color: gainsboro;
                         padding-left: 45px;
+                        transition: all .2s;
                     }
+
                     input::placeholder {
                         color: white;
                     }
+
                     input:focus-visible {
                         outline: none;
                     }
+                    input:focus {
+                        box-shadow: 0px 1px 3px 0px #1a1047;
+                    }
                 }
 
-                .signin_pass {
-                    @extend .signin_username
-                }
+
                 .signin_q {
                     padding: 0 10px;
-                        input {
-                            margin-right: 10px;
-                        }
-                   
+
+                    input {
+                        opacity: 0;
+                        position: absolute;
+                        left: -9999px;
+                    }
+                    a {
+                    color: $color-red-1;
+
+                        float: right;
+                        text-decoration: none;
+                    }
+                    .lable {
+                        color: $color-vio-1;
+                        cursor: pointer;
+                        position: relative;
+                        padding-left: 25px;
+                        font-size: 15px;
+
+                    }
+
+                    .lable:before {
+                        border-radius: 5px;
+                        content: '';
+                        width: 20px;
+                        height: 20px;
+                        background: #dcdcdc;
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                    .lable:after {
+                        color: $color-vio-1;
+                        content: '\f121';
+                        font-family: "Ionicons";
+                        width: 20px;
+                        height: 20px;
+                        text-align: center;
+                        position: absolute;
+                        line-height: 22px;
+                        font-size: 13px;
+                        transition: all .4s;
+                        top: 0;
+                        left: 0;
+                        opacity: 0;
+                        transform: scale(0);
+
+
+                    }
+                    input:checked + .lable:after {
+                        opacity: 1;
+                        transform: scale(1);
+                    } 
+
+                }
+                .login {
+                    margin-top: 35px;
+                    padding: 0 50px;
+
+                    a {
+                        cursor: pointer;
+                        background: linear-gradient($color-vio-2, $color-vio-1);
+                        width: 100%;
+                        height: 40px;
+                        border-radius: 20px;
+                        border: none;
+                        color: white;
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all .4s ease-in-out;
+                    }
+                    
                 }
 
-                
-                .login {
-                    margin-top: 50px;
-                    padding: 0 50px;
-                        a {
-                            background: linear-gradient($color-vio-2, $color-vio-1);
-                            width: 100%;
-                            height: 40px;
-                            border-radius: 20px;
-                            border: none;
-                            color: white;
-                            text-decoration: none;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        }
-                }
-               
             }
 
         }
@@ -99,17 +161,21 @@
     }
 
 }
+
 @media (max-width: 1200px) {
     .signin {
         .signin_cover {
             .signin_left {
+
                 .signin_left_content {
                     .signin_title {
                         margin-bottom: 50px;
+
                         h1 {
                             font-size: 45px;
                         }
                     }
+
                     .login {
                         margin-top: 35px;
                     }
@@ -118,6 +184,7 @@
         }
     }
 }
+
 @media (max-width: 920px) {
     .signin {
         .signin_cover {
@@ -125,25 +192,33 @@
             .signin_left {
                 width: 500px;
                 margin: auto;
+
                 .signin_left_cover {
                     background: white;
                     padding: 40px;
                     border-radius: 15px;
                 }
+
+                .signin_left_cover {
+                    box-shadow: 1px 5px 10px 1px $color-vio-1;
+                }
+
                 .signin_left_content {
                     .signin_title {
                         margin-bottom: 30px;
+
                         h1 {
                             font-size: 45px;
                         }
                     }
-                   
+
                     .login {
                         padding: 0px 20px;
                         margin-top: 35px;
                     }
                 }
             }
+
             .signin_img {
                 width: 100%;
                 @include align2;
@@ -152,50 +227,55 @@
         }
     }
 }
+
 @media (max-width: 640px) {
     .signin {
         .signin_cover {
 
             .signin_left {
-             
+
                 .signin_left_content {
                     .signin_title {
                         margin-bottom: 30px;
+
                         h1 {
                             font-size: 35px;
                         }
                     }
+
                     .signin_username {
                         svg {
                             width: 20px;
                         }
                     }
-                   
+
                 }
             }
         }
     }
 }
+
 @media (max-width: 330px) {
     .signin {
         .signin_cover {
             .signin_left {
-                .signin_left_cover {
+                .signin_left_cover {}
 
-                }
                 .signin_left_content {
                     .signin_title {
                         margin-bottom: 30px;
+
                         h1 {
                             font-size: 35px;
                         }
                     }
+
                     .signin_username {
                         svg {
                             width: 20px;
                         }
                     }
-                   
+
                 }
             }
         }

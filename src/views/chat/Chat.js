@@ -13,13 +13,13 @@ const Chat = (props) => {
   const location = useLocation();
   useEffect(() => {
     infor = queryString.parse(location.search);
+    console.log(infor)
     socket.emit("join", infor);
   }, [location.search]);
 
   useEffect(() => {
     socket.on("receiveMess", (data) => {
         setListMessage((list) => [...list, data]);
-        console.log(listMessage);
     });
   }, [socket]);
 
@@ -36,6 +36,7 @@ const Chat = (props) => {
       };
       setListMessage((list) => [...list, data]);
       await socket.emit("send_message", data);
+      console.log(listMessage);
       setMessage("");
     }
   };
