@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
 }
-@mixin  align2  {
-    position: absolute;
+@mixin  align2($position: absolute) {
+    position: $position;
     top: 0;
     left: 0;
     right: 0;

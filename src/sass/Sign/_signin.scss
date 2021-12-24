@@ -2,6 +2,7 @@
 @import '../Variable/align';
 
 .signin {
+    z-index: -1;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -13,6 +14,7 @@
         height: 100%;
 
         .signin_left {
+            padding: 40px 0;
             @include align;
             width: 40%;
 
@@ -132,7 +134,7 @@
                 .login {
                     margin-top: 35px;
 
-                    a {
+                    button {
                         cursor: pointer;
                         background: linear-gradient($color-vio-2, $color-vio-1);
                         width: 100%;
@@ -225,7 +227,7 @@
 
             .signin_img {
                 width: 100%;
-                @include align2;
+                @include align2(fixed);
                 z-index: -1;
             }
         }

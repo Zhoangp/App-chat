@@ -1,33 +1,44 @@
 import React, { Fragment, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import {useDispatch} from 'react-redux'
 import { GiPadlock } from "react-icons/gi";
 import { IoMdPerson } from "react-icons/io";
-import { Formik } from "formik";
-const Index = () => {
-  const [name, setName] = useState("");
-  const [roomId, setRommId] = useState("");
+import { Field, Form, Formik } from "formik";
+import { signIn } from "../../../redux/actions/getInforUser";
+const Index = (props) => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const submit = (values) => {
+    dispatch(signIn(values, (name) => {
+        history.push(`/chat?name=${name}`)
+    }))
+  }
   return (
-    <Formik render={formikProps => {
+    <Formik 
+    initialValues={
+      {taiKhoan: "",
+      matKhau: ""
+    }
+    }
+    onSubmit={submit}
+    render={formikProps => {
       return (
-            <Fragment>
-             
+            <Form>
               <div className="input">
-                <input
+                <Field
+                  name="taiKhoan"
                   type="text"
                   placeholder="Username"
-                  onChange={(event) => {
-                    setName(event.target.value);
-                  }}
+                  onChange={formikProps.handleChange}
                 />
                 <IoMdPerson />
               </div>
               <div className="input">
-                <input
+                <Field
+                  name="matKhau"
                   type="text"
                   placeholder="Password"
-                  onChange={(event) => {
-                    setRommId(event.target.value);
-                  }}
+                  onChange={formikProps.handleChange}
                 />
                 <GiPadlock />
               </div>
@@ -37,9 +48,9 @@ const Index = () => {
                   <NavLink to="/signup">Sign Up</NavLink>
               </div>
               <div className="login">
-                <NavLink to={`/chat?name=${name}&room=${roomId}`}>LOGIN</NavLink>
+                <button>LOGIN</button>
                 </div>
-                </Fragment>
+                </Form>
             
       )
     }}/>

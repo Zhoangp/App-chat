@@ -8,7 +8,7 @@ const Index = () => {
   console.log(sign.pathname)
   return (
     <div>
-         <div className="signin">
+        <div className="signin">
         <div className="signin_cover">
           <div className="signin_left">
             <div className="signin_left_cover">
