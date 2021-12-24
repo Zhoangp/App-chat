@@ -1,6 +1,5 @@
-import SignIn from './views/sign_in'
 import Chat from './views/chat/Chat'
-import SignUp from './views/sign_up/index'
+import Sign from './views/sign/index'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './sass/main.scss'
 function App() {
@@ -8,8 +7,7 @@ function App() {
     <BrowserRouter>
     <Switch>
       <Route path="/chat" component={Chat}/>
-      <Route path="/signup" component={SignUp} />
-      <Route path="/" exact component={SignIn}/>
+      <Route path="/"  component={Sign}/>
     </Switch>
     </BrowserRouter>
   );
