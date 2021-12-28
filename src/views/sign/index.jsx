@@ -5,7 +5,6 @@ import SignIn from './sign_in/index'
 import SignUp from './sign_up/index'
 const Index = () => {
   const sign = useLocation()
-  console.log(sign.pathname)
   return (
     <div>
         <div className="signin">

@@ -10,6 +10,8 @@ export const signIn = (values, callback) => {
                 method: "POST",
                 data: values
               })
+            dispatch({type: actionTypes.LOADING_OFF})
+            
               await dispatch({ type: actionTypes.GET_USER, payload: result.data})
               callback(result.data.hoTen)
         }
@@ -17,5 +19,6 @@ export const signIn = (values, callback) => {
             alert("Username or Password is incorrect!")
       }
       dispatch({type: actionTypes.LOADING_OFF})
+
 }
 }
