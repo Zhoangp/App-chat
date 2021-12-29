@@ -1,14 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 import { useLocation } from "react-router-dom";
 import {RiSendPlaneFill} from 'react-icons/ri'
+import { useSelector } from "react-redux";
 
 let infor;
-const ENDPOINT = /* "https://watch-app-chat.herokuapp.com/" */ "localhost:5000";
+const ENDPOINT = "https://watch-app-chat.herokuapp.com/"
 const socket = io(ENDPOINT, { transports: ["websocket"] });
 
 const Chat = (props) => {
+  const {information} = useSelector(state => state.UserReducer)
+  console.log(information)
   const messagesEndRef = useRef(null)
   const [message, setMessage] = useState("");
   const [listMessage, setListMessage] = useState([]);
@@ -18,12 +21,12 @@ const Chat = (props) => {
   }
   useEffect(() => {
     infor = queryString.parse(location.search);
-    console.log(infor)
     socket.emit("join", infor);
   }, [location.search]);
 
   useEffect(() => {
     socket.on("receiveMess", (data) => {
+      scrollToBottom()
         setListMessage((list) => [...list, data]);
     });
   }, [socket]);
@@ -34,7 +37,7 @@ const Chat = (props) => {
       const data = {
         mess: message,
         user: infor.name,
-        room: infor.room,
+        room: infor.room || 1,
         time:
           new Date(Date.now()).getHours() +
           ":" +
@@ -44,12 +47,20 @@ const Chat = (props) => {
       await socket.emit("send_message", data);
       console.log(listMessage);
       setMessage("");
-    scrollToBottom()
+      scrollToBottom()
+      
     }
   };
   return (
     <div className="chat-cover">
+      <div className="chat-side">
+      </div>
       <div className="chat">
+        <div className="chat-infor-title">
+          <h2>
+        {information.hoTen}
+        </h2>
+        </div>
         <div className="chat-content">
         {listMessage.map((item, index) => {
           if (item.user !== queryString.parse(location.search).name)

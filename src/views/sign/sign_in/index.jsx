@@ -12,7 +12,7 @@ const Index = (props) => {
   const history = useHistory()
   const submit = (values) => {
     dispatch(signIn(values, (name) => {
-      history.push(`/chat?name=${name}`)
+      history.push(`/chat?name=${name}&room=1`)
   }))
   }
   const validate = yup.object().shape({
@@ -73,7 +73,7 @@ const Index = (props) => {
               <div className="login">
               {formikProps.values.taiKhoan && formikProps.values.matKhau ? 
                 <button className="btn-login">Sign In</button>
-                  : <button disabled className="btn-no-login">Sign</button>
+                  : <button disabled className="btn-no-login">Sign In</button>
               }
                 </div>
                 </Form>

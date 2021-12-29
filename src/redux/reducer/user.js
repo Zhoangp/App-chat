@@ -8,7 +8,6 @@ const UserReducer = (state = initial, action) => {
             state.information = action.payload
             return {...state}
         }
-    
         default:
             return {...state}
     }

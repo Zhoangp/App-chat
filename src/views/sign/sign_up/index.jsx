@@ -37,7 +37,6 @@ const Index = (props) => {
         }
       render={(formikProps) => {
         return (
-          
           <Form>
             
             <div className="input">
