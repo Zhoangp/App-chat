@@ -4,6 +4,7 @@ import { useHistory, useLocation, useParams } from 'react-router-dom';
 import SignIn from './sign_in/index'
 import SignUp from './sign_up/index'
 const Index = () => {
+  console.log(2)
   const sign = useLocation()
   return (
     <div>

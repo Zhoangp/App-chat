@@ -11,7 +11,7 @@ const socket = io(ENDPOINT, { transports: ["websocket"] });
 
 const Chat = (props) => {
   const {information} = useSelector(state => state.UserReducer)
-  console.log(information)
+  console.log(1)
   const messagesEndRef = useRef(null)
   const [message, setMessage] = useState("");
   const [listMessage, setListMessage] = useState([]);
